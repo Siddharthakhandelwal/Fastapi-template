@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math API Documentation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="/static/styles.css" rel="stylesheet" />
+    <style>
+      .endpoint-card {
+        transition: all 0.3s ease;
+      }
+      .endpoint-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+          Math API Documentation
+        </h1>
+        <p class="text-xl text-gray-600">
+          A powerful API for mathematical operations
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Addition -->
+        <div class="endpoint-card bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Addition</h2>
+          <p class="text-gray-600 mb-4">Add two numbers together</p>
+          <div class="space-y-4">
+            <input
+              type="number"
+              id="add-num1"
+              placeholder="First number"
+              class="w-full p-2 border rounded"
+            />
+            <input
+              type="number"
+              id="add-num2"
+              placeholder="Second number"
+              class="w-full p-2 border rounded"
+            />
+            <button
+              onclick="calculate('add')"
+              class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Calculate
+            </button>
+            <div id="add-result" class="text-center font-semibold"></div>
+          </div>
+        </div>
+
+        <!-- Subtraction -->
+        <div class="endpoint-card bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Subtraction</h2>
+          <p class="text-gray-600 mb-4">Subtract second number from first</p>
+          <div class="space-y-4">
+            <input
+              type="number"
+              id="subtract-num1"
+              placeholder="First number"
+              class="w-full p-2 border rounded"
+            />
+            <input
+              type="number"
+              id="subtract-num2"
+              placeholder="Second number"
+              class="w-full p-2 border rounded"
+            />
+            <button
+              onclick="calculate('subtract')"
+              class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Calculate
+            </button>
+            <div id="subtract-result" class="text-center font-semibold"></div>
+          </div>
+        </div>
+
+        <!-- Multiplication -->
+        <div class="endpoint-card bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            Multiplication
+          </h2>
+          <p class="text-gray-600 mb-4">Multiply two numbers</p>
+          <div class="space-y-4">
+            <input
+              type="number"
+              id="multiply-num1"
+              placeholder="First number"
+              class="w-full p-2 border rounded"
+            />
+            <input
+              type="number"
+              id="multiply-num2"
+              placeholder="Second number"
+              class="w-full p-2 border rounded"
+            />
+            <button
+              onclick="calculate('multiply')"
+              class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Calculate
+            </button>
+            <div id="multiply-result" class="text-center font-semibold"></div>
+          </div>
+        </div>
+
+        <!-- Division -->
+        <div class="endpoint-card bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Division</h2>
+          <p class="text-gray-600 mb-4">Divide first number by second</p>
+          <div class="space-y-4">
+            <input
+              type="number"
+              id="divide-num1"
+              placeholder="First number"
+              class="w-full p-2 border rounded"
+            />
+            <input
+              type="number"
+              id="divide-num2"
+              placeholder="Second number"
+              class="w-full p-2 border rounded"
+            />
+            <button
+              onclick="calculate('divide')"
+              class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Calculate
+            </button>
+            <div id="divide-result" class="text-center font-semibold"></div>
+          </div>
+        </div>
+
+        <!-- Power -->
+        <div class="endpoint-card bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Power</h2>
+          <p class="text-gray-600 mb-4">
+            Raise first number to power of second
+          </p>
+          <div class="space-y-4">
+            <input
+              type="number"
+              id="power-num1"
+              placeholder="Base"
+              class="w-full p-2 border rounded"
+            />
+            <input
+              type="number"
+              id="power-num2"
+              placeholder="Exponent"
+              class="w-full p-2 border rounded"
+            />
+            <button
+              onclick="calculate('power')"
+              class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+              Calculate
+            </button>
+            <div id="power-result" class="text-center font-semibold"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          API Documentation
+        </h2>
+        <div class="space-y-4">
+          <div class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700">Base URL</h3>
+            <p class="text-gray-600">
+              All endpoints are relative to:
+              <code class="bg-gray-100 px-2 py-1 rounded">/</code>
+            </p>
+          </div>
+          <div class="border-b pb-4">
+            <h3 class="text-xl font-semibold text-gray-700">Endpoints</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600">
+              <li>
+                <code class="bg-gray-100 px-2 py-1 rounded">POST /add</code> -
+                Add two numbers
+              </li>
+              <li>
+                <code class="bg-gray-100 px-2 py-1 rounded"
+                  >POST /subtract</code
+                >
+                - Subtract two numbers
+              </li>
+              <li>
+                <code class="bg-gray-100 px-2 py-1 rounded"
+                  >POST /multiply</code
+                >
+                - Multiply two numbers
+              </li>
+              <li>
+                <code class="bg-gray-100 px-2 py-1 rounded">POST /divide</code>
+                - Divide two numbers
+              </li>
+              <li>
+                <code class="bg-gray-100 px-2 py-1 rounded">POST /power</code> -
+                Calculate power
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-700">Request Format</h3>
+            <p class="text-gray-600">
+              All endpoints accept JSON data in the following format:
+            </p>
+            <pre class="bg-gray-100 p-4 rounded mt-2">
+{
+    "num1": number,
+    "num2": number
+}</pre
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function calculate(operation) {
+        const num1 = parseFloat(
+          document.getElementById(`${operation}-num1`).value
+        );
+        const num2 = parseFloat(
+          document.getElementById(`${operation}-num2`).value
+        );
+
+        if (isNaN(num1) || isNaN(num2)) {
+          document.getElementById(`${operation}-result`).textContent =
+            "Please enter valid numbers";
+          return;
+        }
+
+        try {
+          const response = await fetch(`/${operation}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              num1: num1,
+              num2: num2,
+            }),
+          });
+
+          const data = await response.json();
+          if (data.error) {
+            document.getElementById(
+              `${operation}-result`
+            ).textContent = `Error: ${data.error}`;
+          } else {
+            document.getElementById(
+              `${operation}-result`
+            ).textContent = `Result: ${data.result}`;
+          }
+        } catch (error) {
+          document.getElementById(`${operation}-result`).textContent =
+            "Error: Could not calculate result";
+        }
+      }
+    </script>
+  </body>
+</html>
