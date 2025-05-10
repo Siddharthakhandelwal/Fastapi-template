@@ -1,14 +1,33 @@
-# Math API
+# FastAPI Pet Store API
 
-A FastAPI-based mathematical operations API with a beautiful web interface for testing and documentation.
+A FastAPI-based implementation of the Swagger Pet Store API for demonstration and testing purposes.
 
 ## Features
 
-- Basic mathematical operations (addition, subtraction, multiplication, division)
-- Advanced operations (power)
-- Interactive web interface for testing
-- API documentation
-- Ready for deployment on Render
+- CRUD operations for pets (in-memory storage)
+- OpenAPI/Swagger documentation at `/docs`
+- Logging of all requests and responses
+- Ready for local development and cloud deployment
+
+## Endpoints
+
+- `POST /pets` — Create a new pet
+- `GET /pets` — List all pets (optionally filter by status)
+- `GET /pets/{pet_id}` — Get a pet by ID
+- `PUT /pets/{pet_id}` — Update a pet by ID
+- `DELETE /pets/{pet_id}` — Delete a pet by ID
+
+## Pet Model Example
+
+```json
+{
+  "name": "Fluffy",
+  "category": { "name": "Dogs" },
+  "photo_urls": ["http://example.com/fluffy.jpg"],
+  "tags": [{ "name": "friendly" }],
+  "status": "available"
+}
+```
 
 ## Local Development
 
@@ -16,7 +35,10 @@ A FastAPI-based mathematical operations API with a beautiful web interface for t
 2. Create a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    ```
 3. Install dependencies:
    ```bash
@@ -26,46 +48,15 @@ A FastAPI-based mathematical operations API with a beautiful web interface for t
    ```bash
    uvicorn main:app --reload
    ```
-5. Open your browser and navigate to `http://localhost:8000`
+5. Open your browser and navigate to `http://localhost:8000/docs` for the Swagger UI.
 
-## API Endpoints
+## Deployment
 
-- `POST /add` - Add two numbers
-- `POST /subtract` - Subtract two numbers
-- `POST /multiply` - Multiply two numbers
-- `POST /divide` - Divide two numbers
-- `POST /power` - Calculate power
+You can deploy this app to any cloud provider that supports Python and FastAPI (e.g., Render, Heroku, Azure, etc.).
 
-## Deploying to Render
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
 
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Use the following settings:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-4. Deploy!
+## License
 
-## API Documentation
-
-The API documentation is available at the root URL (`/`) when you run the application. It provides:
-
-- Interactive testing interface
-- Endpoint descriptions
-- Request/response format examples
-- Error handling information
-
-## Error Handling
-
-The API includes proper error handling for:
-
-- Division by zero
-- Invalid input numbers
-- Invalid logarithm inputs
-
-## Technologies Used
-
-- FastAPI
-- Uvicorn
-- Jinja2
-- TailwindCSS
-- JavaScript (Fetch API)
+MIT
